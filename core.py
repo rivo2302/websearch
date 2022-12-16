@@ -79,8 +79,8 @@ def get_started(sender_id, lang, cmd, **ext):
         )
     ]
 
-    chat.send_button(sender_id, buttons, translate("voir_repos", lang))
-    send_language(sender_id, lang)
+    chat.send_button(sender_id, buttons, translate("voir_repos", "fr"))
+    send_language(sender_id, "fr")
 
 
 @ampalibe.command("/SET_LANGUAGE")
