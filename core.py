@@ -108,14 +108,14 @@ def send_option(sender_id, cmd, **ext):
             image_url=env.get("AMP_URL") + "/asset/pdf.jpg",
             payload=Payload("/PDF", value=cmd),
         ),
-        QuickReply(
-            title="Image",
-            image_url=env.get("AMP_URL") + "/asset/image.png",
-            payload=Payload(
-                "/IMAGE",
-                value=cmd,
-            ),
-        ),
+        # QuickReply(
+        #     title="Image",
+        #     image_url=env.get("AMP_URL") + "/asset/image.png",
+        #     payload=Payload(
+        #         "/IMAGE",
+        #         value=cmd,
+        #     ),
+        # ),
         QuickReply(
             title="Powerpoint",
             image_url=env.get("AMP_URL") + "/asset/ppt.png",
