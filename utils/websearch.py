@@ -4,6 +4,15 @@ from ampalibe import Payload, translate
 from os import environ as env
 
 
+def get_title(url):
+    res = url.split("/")[-1]
+    if len(res) > 40:
+        res = res[:40] + "..."
+    elif res == "":
+        res = url[:40]
+    return res
+
+
 class Botsearch:
     def __init__(self, query, lang):
         self.query = query
@@ -16,7 +25,7 @@ class Botsearch:
         items = (
             [
                 Element(
-                    title=doc.split("/")[-1],
+                    title=get_title(doc),
                     image_url=env.get("AMP_URL") + "/asset/docx.png",
                     buttons=[
                         Button(
@@ -39,7 +48,7 @@ class Botsearch:
         items = (
             [
                 Element(
-                    title=pdf.split("/")[-1],
+                    title=get_title(pdf),
                     image_url=env.get("AMP_URL") + "/asset/pdf.jpg",
                     buttons=[
                         Button(
@@ -62,7 +71,7 @@ class Botsearch:
         items = (
             [
                 Element(
-                    title=image.split("/")[-1],
+                    title=get_title(image),
                     image_url=image,
                     buttons=[
                         Button(
@@ -87,7 +96,7 @@ class Botsearch:
         items = (
             [
                 Element(
-                    title=xlsx.split("/")[-1],
+                    title=get_title(xlsx),
                     image_url=env.get("AMP_URL") + "/asset/excel.jpg",
                     buttons=[
                         Button(
@@ -109,7 +118,7 @@ class Botsearch:
         pptxs = self.websearch.pptx
         items = [
             Element(
-                title=pptx.split("/")[-1],
+                title=get_title(pptx),
                 image_url=env.get("AMP_URL") + "/asset/ppt.png",
                 buttons=[
                     Button(
