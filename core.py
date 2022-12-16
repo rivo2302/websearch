@@ -96,7 +96,7 @@ def search(sender_id, lang, cmd, **ext):
 
 
 @ampalibe.action("/ATTENTE_QUERY")
-def send_option(sender_id, cmd, **ext):
+def send_option(sender_id, lang, cmd, **ext):
     quick_rep = [
         QuickReply(
             title="Docx",
@@ -130,7 +130,7 @@ def send_option(sender_id, cmd, **ext):
     chat.send_quick_reply(
         sender_id,
         quick_rep,
-        "Quel type de format vous voulez voir.",
+        translate("format_type", lang),
     )
     query.set_temp(sender_id, "keyword", cmd)
 

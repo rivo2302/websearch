@@ -24,6 +24,11 @@
         "fr": "Bonjour 👋, \n Bienvenue sur WebSearch, un petit moteur de recherche développé avec la framework Ampalibe. 😁 Tapez juste  ce que vous voulez chercher et je m'occupe du reste  😉",
         "en": "Hello 👋, \n Welcome to WebSearch, a small search engine developed with the Ampalibe framework. 😁 Just type what you want to search for and I'll take care of the rest 😉"
     },
+    "format_type": {
+        "mg": "Inona no tadiavinao :",
+        "fr": "Quel type de format vous voulez voir :",
+        "en": "What type of format do you want to search :"
+    },
     "choose": {
         "mg": "Hiova fiteny",
         "fr": "Changer de langue",
