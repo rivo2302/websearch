@@ -79,7 +79,7 @@ def get_started(sender_id, lang, cmd, **ext):
         )
     ]
 
-    chat.send_button(sender_id, buttons, translate("voir_repos", "fr"))
+    chat.send_button(sender_id, buttons, "Voir le code source")
     send_language(sender_id, "fr")
 
 
