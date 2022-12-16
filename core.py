@@ -11,7 +11,7 @@ chat = Messenger()
 chat.get_started("/GET_STARTED")
 
 
-def send_lanuage(sender_id, lang):
+def send_language(sender_id, lang):
     quick_rep = [
         QuickReply(
             title="MG",
@@ -63,24 +63,24 @@ def after_process(sender_id, **ext):
 
 @ampalibe.command("/CHOOSE_LANGUAGE")
 def choose_langue(sender_id, lang, **ext):
-    send_lanuage(sender_id, lang)
+    send_language(sender_id, lang)
 
 
 @ampalibe.command("/GET_STARTED")
 def get_started(sender_id, lang, cmd, **ext):
 
-    chat.send_message(sender_id, translate("greeting", lang))
-    send_persistant_menu(sender_id, lang)
+    chat.send_message(sender_id, translate("greeting", "fr"))
+    send_persistant_menu(sender_id, "fr")
     buttons = [
         Button(
             type=Type.web_url,
-            title=translate("go_github", lang),
+            title=translate("go_github", "fr"),
             url="https://github.com/rivo2302/websearch",
         )
     ]
 
     chat.send_button(sender_id, buttons, translate("voir_repos", lang))
-    send_lanuage(sender_id, lang)
+    send_language(sender_id, lang)
 
 
 @ampalibe.command("/SET_LANGUAGE")
