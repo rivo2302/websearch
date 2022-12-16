@@ -1,7 +1,6 @@
 </br>
 </br>
 <p align="center"> 
-    <img height="400" src="https://raw.githubusercontent.com/rivo2302/websearch/master/assets/public/websearch.png">
     <img height="400" src="https://raw.githubusercontent.com/rivo2302/websearch/master/assets/public/ampalibe.png">
 </p>
 <div align="center"> 
