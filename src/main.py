@@ -2,7 +2,7 @@ from os import environ as env
 
 
 import ampalibe
-from ampalibe import Messenger, Model, Payload, translate
+from ampalibe import Messenger, Model, Payload, translate, Logger
 from ampalibe.ui import QuickReply, Button, Type
 
 from tools import Botsearch
@@ -120,6 +120,15 @@ def search_pptx(sender_id, cmd, lang, value, **ext):
     ) if results else chat.send_text(sender_id, translate("not_result", lang))
 
 
+@ampalibe.command("/IMAGE")
+def search_image(sender_id, cmd, lang, value, **ext):
+    keyword = query.get_temp(sender_id, "keyword")
+    results = Botsearch(keyword, lang).image
+    chat.send_template(
+        sender_id, results, next=True
+    ) if results else chat.send_text(sender_id, translate("not_result", lang))
+
+
 @ampalibe.command("/DOWNLOAD")
 def download(sender_id, cmd, lang, link, **ext):
     chat.send_text(sender_id, translate("download_loading", lang))
@@ -130,17 +139,8 @@ def download(sender_id, cmd, lang, link, **ext):
             chat.send_file_url(sender_id, link)
 
     except Exception as e:
-        print(e)
+        Logger.error(e)
         chat.send_text(
             sender_id,
             translate("file_not_sent", lang),
         )
-
-
-@ampalibe.command("/IMAGE")
-def search_image(sender_id, cmd, lang, value, **ext):
-    keyword = query.get_temp(sender_id, "keyword")
-    results = Botsearch(keyword, lang).image
-    chat.send_template(
-        sender_id, results, next=True
-    ) if results else chat.send_text(sender_id, translate("not_result", lang))
