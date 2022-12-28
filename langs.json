@@ -30,14 +30,14 @@
         "en": "What type of format do you want to search :"
     },
     "choose": {
-        "mg": "Hiova fiteny",
-        "fr": "Changer de langue",
-        "en": "Change language"
+        "mg": "🇲🇬 Hiova fiteny",
+        "fr": "🇨🇵 Changer de langue",
+        "en": "🇬🇧 Change language"
     },
     "type_word": {
-        "mg": "Alefaso azafady ny teny hokarohana:",
-        "fr": "Veuiller taper le mot à rechercher : ",
-        "en": "Please type the word to search for: "
+        "mg": "Alefaso azafady ny teny hokarohana😊:",
+        "fr": "Veuiller taper le mot à rechercher 😊: ",
+        "en": "Please type the word to search for😊: "
     },
     "language_changed": {
         "mg": "Voaova tsara ny fiteninao ✅",
@@ -58,5 +58,20 @@
         "mg": "Azafady 😢, io rakitra io dia tsy misy na milanja mihoatra ny 25MB.",
         "fr": "Desolé 😢, le fichier n'est pas disponible ou pèse plus de 25Mo.",
         "en": "Sorry 😢, the file is not available or weighs more than 25MB."
+    },
+    "about_me": {
+        "mg": "🤖 Momba ahy",
+        "fr": "🤖 À propos de moi",
+        "en": "🤖 About me"
+    },
+    "description": {
+        "mg": "WebSearch 🤖, milina fikarohana kely novolavolaina niaraka tamin'ny rafitra Ampalibe😉. Soraty fotsiny izay tianao hotadiavina dia izaho no hikarakara ny ambiny 😁",
+        "fr": "WebSearch 🤖, un petit moteur de recherche développé avec la framework Ampalibe😉. Tapez juste  ce que vous voulez chercher et je m'occupe du reste  😁",
+        "en": "WebSearch 🤖, a small search engine developed with the Ampalibe framework😉. Just type what you want to search for and I'll take care of the rest 😁"
+    },
+    "features": {
+        "mg": "Inona no azoko atao (ankehitriny 😁): \n📌 Mitadiava rakitra docs \n 📌 Mitadiava rakitra PDF \n📌 Mitadiava rakitra excel \n📌 Mitadiava rakitra PowerPoint \n \n 😉Mijanòna amin'ny fidirana raha hijery ny ahy endri-javatra vaovao ...",
+        "fr": "Ce que je peux faire (pour le moment 😁) : \n📌 Recherche de fichers docs \n 📌 Recherche de fichier PDF \n📌 Recherche de fichier excel \n📌 Recherche de fichier PowerPoint \n \n 😉Rester connecté pour voir mes nouvelles fonctionnalités ...",
+        "en": "What I can do (for the moment 😁): \n📌 Search for docs files \n 📌 Search for PDF files \n📌 Search for excel files \n📌 Search for PowerPoint files \n \n 😉Stay logged in to see my new features ..."
     }
 }

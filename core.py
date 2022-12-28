@@ -1,28 +1,38 @@
 from os import environ as env
 
 import ampalibe
-from ampalibe import Messenger, Model, Payload, translate
-from ampalibe.ui import QuickReply, Button, Type
+from ampalibe import Messenger, Payload, translate, Logger
 from ampalibe.messenger import Action
 
 
-query = Model()
+from src.routes import *
+from src.views import View
+from src.models import CustomModel
+
+model = CustomModel()
 chat = Messenger()
+view = View()
 
 chat.get_started("/GET_STARTED")
-
-from src.main import *
 
 
 @ampalibe.before_receive()
 def before_process(sender_id, **ext):
     chat.send_action(sender_id, Action.mark_seen)
+    chat.send_action(sender_id, Action.typing_on)
+
+    # Check if user has name if true we get and set it if possible
+    if model.get_name(sender_id) is None:
+        user_info = chat.get_user_profile(sender_id)
+        name = user_info.get("first_name") + " " + user_info.get("last_name")
+        if name is not None:
+            res = model.set_name(sender_id, name)
     return True
 
 
 @ampalibe.after_receive()
 def after_process(sender_id, lang, res, **ext):
-    query.set_action(sender_id, "/ATTENTE_QUERY")
+    model.set_action(sender_id, "/ATTENTE_QUERY")
     if res is None:
         return
     if lang is None:
@@ -30,40 +40,14 @@ def after_process(sender_id, lang, res, **ext):
     if res.get("VALUE") is not None:
         lang = res.get("VALUE")
     if res.get("SEND_CHANGE_LANGUAGE") is True:
-        quick_rep = [
-            QuickReply(
-                title="MG",
-                image_url=env.get("AMP_URL") + "/asset/mg.png",
-                payload=Payload("/SET_LANGUAGE", value="mg"),
-            ),
-            QuickReply(
-                title="FR",
-                image_url=env.get("AMP_URL") + "/asset/fr.png",
-                payload=Payload("/SET_LANGUAGE", value="fr"),
-            ),
-            QuickReply(
-                title="EN",
-                image_url=env.get("AMP_URL") + "/asset/en.jpg",
-                payload=Payload("/SET_LANGUAGE", value="en"),
-            ),
-        ]
         chat.send_quick_reply(
-            sender_id, quick_rep, translate("choose_language", lang)
+            sender_id, view.language_menu, translate("choose_language", lang)
         )
     if res.get("SEND_PERSISTANT_MENU") is True:
-        persistent_menu = [
-            Button(
-                type=Type.postback,
-                title=translate("search", lang),
-                payload=Payload("/SEARCH"),
-            ),
-            Button(
-                type=Type.postback,
-                title=translate("choose", lang),
-                payload=Payload("/CHOOSE_LANGUAGE"),
-            ),
-        ]
-        chat.persistent_menu(sender_id, persistent_menu)
+        chat.persistent_menu(sender_id, view.persistant_menu(lang))
+
+    if res.get("SEND_KEY") is True:
+        chat.send_text(sender_id, translate("type_word", lang))
 
 
 @ampalibe.command("/")
